@@ -1,0 +1,26 @@
+services:
+  postgres:
+    image: postgres:17
+    environment:
+      POSTGRES_DB: travel_agent
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports: ["5432:5432"]
+    volumes: [postgres_data:/var/lib/postgresql/data]
+    healthcheck:
+      test: ["CMD-SHELL","pg_isready -U postgres -d travel_agent"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  api:
+    build: .
+    env_file: [.env]
+    depends_on:
+      postgres:
+        condition: service_healthy
+    ports: ["8000:8000"]
+    restart: unless-stopped
+
+volumes:
+  postgres_data:

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Travel Planner UI</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background: #f4f7fb;
+        margin: 0;
+        padding: 40px 20px;
+      }
+      .container {
+        max-width: 720px;
+        margin: 0 auto;
+        background: white;
+        border-radius: 12px;
+        padding: 24px;
+        box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+      }
+      h1 {
+        margin-top: 0;
+        color: #1f2937;
+      }
+      form {
+        display: grid;
+        gap: 16px;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 16px;
+      }
+      label {
+        display: flex;
+        flex-direction: column;
+        font-size: 14px;
+        color: #374151;
+        font-weight: 600;
+      }
+      input, button {
+        margin-top: 6px;
+        padding: 10px 12px;
+        font-size: 14px;
+        border-radius: 8px;
+        border: 1px solid #d1d5db;
+      }
+      input:focus {
+        outline: 2px solid #93c5fd;
+      }
+      button {
+        background: #2563eb;
+        color: white;
+        border: none;
+        cursor: pointer;
+        font-weight: 600;
+      }
+      button:hover {
+        background: #1d4ed8;
+      }
+      .result {
+        margin-top: 20px;
+        background: #f8fafc;
+        border: 1px solid #e5e7eb;
+        border-radius: 10px;
+        padding: 16px;
+        white-space: pre-wrap;
+        word-wrap: break-word;
+        color: #111827;
+      }
+      .error {
+        color: #b91c1c;
+        background: #fef2f2;
+        border-color: #fecaca;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Travel Planner</h1>
+      <form id="tripForm">
+        <div class="grid">
+          <label>
+            Origin
+            <input name="origin" value="New Delhi" required />
+          </label>
+          <label>
+            Destination
+            <input name="destination" value="Paris" required />
+          </label>
+          <label>
+            Start Date
+            <input type="date" name="start_date" value="2026-11-01" required />
+          </label>
+          <label>
+            End Date
+            <input type="date" name="end_date" value="2026-11-05" required />
+          </label>
+          <label>
+            Travelers
+            <input type="number" name="travelers" value="2" min="1" max="20" required />
+          </label>
+          <label>
+            Budget
+            <input type="number" name="budget" value="50000" min="1" step="0.01" required />
+          </label>
+        </div>
+        <button type="submit">Generate Trip Plan</button>
+      </form>
+
+      <div id="result" class="result">Waiting for request...</div>
+    </div>
+
+    <script>
+      const form = document.getElementById('tripForm');
+      const resultBox = document.getElementById('result');
+
+      form.addEventListener('submit', async function (event) {
+        event.preventDefault();
+
+        const formData = new FormData(form);
+        const payload = {
+          origin: formData.get('origin').trim(),
+          destination: formData.get('destination').trim(),
+          start_date: formData.get('start_date'),
+          end_date: formData.get('end_date'),
+          travelers: Number(formData.get('travelers')),
+          budget: Number(formData.get('budget')),
+        };
+
+        resultBox.textContent = 'Sending request...';
+        resultBox.classList.remove('error');
+
+        try {
+          const response = await fetch('/v1/trips', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': 'Bearer local-ollama'
+            },
+            body: JSON.stringify(payload),
+          });
+
+          const data = await response.json();
+
+          if (!response.ok) {
+            throw new Error(data.detail || 'Request failed');
+          }
+
+          resultBox.textContent = JSON.stringify(data, null, 2);
+        } catch (error) {
+          resultBox.textContent = 'Error: ' + error.message;
+          resultBox.classList.add('error');
+        }
+      });
+    </script>
+  </body>
+</html>

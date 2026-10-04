@@ -1,0 +1,76 @@
+{
+    "thread_id": "429d5537-74a5-4612-899c-00fb7a9338e2",
+    "status": "completed",
+    "result": {
+        "summary": "Title: Exquisite 3-Day Getaway to Goa for Two Travelers from Bengaluru\n\nEmbark on an unforgettable journey as we curate a captivating 3-day trip to the vibrant city of Goa, perfect for two travelers. Here's your itinerary:\n\n**Flight:**\nDemoFly DF303 offers a seamless travel experience from Bengaluru International Airport (BLR) to Dabolim Airport (GOI), Goa. The flight departs at 7:00 AM, ensuring you arrive in Goa by 9:30 AM local time, ready to start your adventure.\n\n**Hotel:**\nFor a luxurious and serene stay, we recommend Demo Beach Resort. Located on the picturesque Majorda beach, this resort offers stunning views of the Arabian Sea, comfortable accommodations, and excellent amenities. The resort is just a 20-minute drive from Dabolim Airport, making it easily accessible upon arrival.\n\n**Weather:**\nGoa enjoys a tropical monsoon climate with warm and humid weather throughout the year. During your visit in March, you can expect temperatures ranging between 25°C (77°F) and 34°C (93°F). The weather is ideal for exploring the city's beaches, historic sites, and local markets.\n\n**Budget Highlights:**\nTo make the most of your trip, here are some budget-friendly recommendations:\n\n1. **Beaches:** Relax on the pristine sands of Colva Beach or Calangute Beach, both offering a variety of water sports and local food stalls.\n2. **Historic Sites:** Visit the Aguada Fort and Chapora Fort for a glimpse into Goa's rich history.\n3. **Local Markets:** Explore Anjuna Flea Market or Mapusa Market to shop for souvenirs, spices, and handicrafts.\n4. **Food:** Indulge in authentic Goan cuisine at local eateries like Ritz Classic, Thirsty Swallow, or Gunpowder.\n\nThis 3-day itinerary promises an enchanting escape to the pearl of the Orient, Goa. We hope this trip is as memorable and enjoyable for you as we've planned it to be! Safe travels!",
+        "itinerary": {
+            "days": [
+                {
+                    "day": 1,
+                    "date": "2026-11-10",
+                    "weather": {
+                        "date": "2026-11-10",
+                        "temperature_c": 27,
+                        "rain_probability": 20
+                    },
+                    "morning": "Outdoor sightseeing",
+                    "afternoon": "Outdoor sightseeing",
+                    "evening": "Dinner and relaxed local exploration"
+                },
+                {
+                    "day": 2,
+                    "date": "2026-11-11",
+                    "weather": {
+                        "date": "2026-11-11",
+                        "temperature_c": 28,
+                        "rain_probability": 35
+                    },
+                    "morning": "Outdoor sightseeing",
+                    "afternoon": "Outdoor sightseeing",
+                    "evening": "Dinner and relaxed local exploration"
+                },
+                {
+                    "day": 3,
+                    "date": "2026-11-12",
+                    "weather": {
+                        "date": "2026-11-12",
+                        "temperature_c": 29,
+                        "rain_probability": 15
+                    },
+                    "morning": "Outdoor sightseeing",
+                    "afternoon": "Outdoor sightseeing",
+                    "evening": "Dinner and relaxed local exploration"
+                }
+            ],
+            "selected_flight": {
+                "airline": "DemoFly",
+                "flight_number": "DF303",
+                "departure": "19:30",
+                "arrival": "21:10",
+                "price_per_person": 4800.0
+            },
+            "selected_hotel": {
+                "name": "Demo Beach Resort",
+                "area": "Beach Road",
+                "rating": 4.5,
+                "price_per_night": 5200.0
+            }
+        },
+        "budget": {
+            "flight_cost": 9600.0,
+            "hotel_cost": 15600.0,
+            "local_transport": 3500.0,
+            "food": 10800.0,
+            "activities": 5000.0,
+            "total": 44500.0,
+            "remaining": 500.0,
+            "within_budget": true
+        },
+        "weather_summary": "Mostly suitable weather; carry a light rain jacket.",
+        "traffic_summary": "Airport transfer may take longer during peak hours.",
+        "notes": [
+            "Flight, hotel, weather and traffic data are mock provider results.",
+            "Verify live availability before booking."
+        ]
+    }
+}
